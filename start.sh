@@ -9,18 +9,18 @@ if screen -list | grep -q "servername"; then
 fi
 
 # Check if network interfaces are up
-NetworkChecks=0
-DefaultRoute=$(route -n | awk '$4 == "UG" {print $2}')
-while [ -z "$DefaultRoute" ]; do
-    echo "Network interface not up, will try again in 1 second";
-    sleep 1;
-    DefaultRoute=$(route -n | awk '$4 == "UG" {print $2}')
-    NetworkChecks=$((NetworkChecks+1))
-    if [ $NetworkChecks -gt 20 ]; then
-        echo "Waiting for network interface to come up timed out - starting server without network connection ..."
-        break
-    fi
-done
+# NetworkChecks=0
+# DefaultRoute=$(route -n | awk '$4 == "UG" {print $2}')
+# while [ -z "$DefaultRoute" ]; do
+#     echo "Network interface not up, will try again in 1 second";
+#     sleep 1;
+#     DefaultRoute=$(route -n | awk '$4 == "UG" {print $2}')
+#     NetworkChecks=$((NetworkChecks+1))
+#     if [ $NetworkChecks -gt 20 ]; then
+#         echo "Waiting for network interface to come up timed out - starting server without network connection ..."
+#         break
+#     fi
+# done
 
 # Change directory to server directory
 cd dirname/minecraftbe/servername
