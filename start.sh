@@ -31,6 +31,10 @@ if [ -d "worlds" ]; then
     tar -pzvcf backups/$(date +%Y.%m.%d.%H.%M.%S).tar.gz worlds
 fi
 
+# Log
+mv log/server.log log/$(date +%Y.%m.%d.%H.%M.%S).log
+touch log/server.log
+
 # Retrieve latest version of Minecraft Bedrock dedicated server
 echo "Checking for the latest version of Minecraft Bedrock server ..."
 
@@ -57,4 +61,4 @@ fi
 
 echo "Starting Minecraft server.  To view window type screen -r servername"
 echo "To minimize the window and let the server run in the background, press Ctrl+A then Ctrl+D"
-screen -dmS servername /bin/bash -c "LD_LIBRARY_PATH=dirname/minecraftbe/servername dirname/minecraftbe/servername/bedrock_server"
+screen -dmS servername /bin/bash -c "LD_LIBRARY_PATH=dirname/minecraftbe/servername dirname/minecraftbe/servername/bedrock_server >> log/server.log"
